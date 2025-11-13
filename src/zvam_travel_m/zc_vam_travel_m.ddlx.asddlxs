@@ -1,0 +1,38 @@
+@Metadata.layer : #CORE
+annotate view ZC_VAM_TRAVEL_M
+    with 
+{
+     @UI.lineItem: [{position: 10}]
+     TravelId;
+     @UI:{
+     lineItem: [{position: 20}],
+     selectionField: [{ position: 20 }]
+     }
+     AgencyId;
+//   AgencyName;
+      @UI:{
+     lineItem: [{position: 30}],
+     selectionField: [{ position: 30 }]
+     }
+     CustomerId;
+//   CustomerName;
+     @UI.lineItem: [{position: 40}]
+     BeginDate;
+     @UI.lineItem: [{position: 50}]
+     EndDate;
+//   BookingFee;
+     @UI.lineItem: [{position: 60}]
+     TotalPrice;
+//   CurrencyCode;
+//   Description;
+ @UI:{
+     lineItem: [{position: 70}],
+     selectionField: [{ position: 40 }]
+     }
+     OverallStatus;
+//   Text;
+//   CreatedBy;
+//   CreatedAt;
+//   LastChangedBy;
+//   LastChangedAt;
+}

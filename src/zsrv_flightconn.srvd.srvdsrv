@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service definition for ConnectionView'
+define service ZSRV_FLIGHTCONN {
+  expose ZCDS_Connectionview;
+  expose ZI_VAM_FLIGHT_TECH_R;
+}

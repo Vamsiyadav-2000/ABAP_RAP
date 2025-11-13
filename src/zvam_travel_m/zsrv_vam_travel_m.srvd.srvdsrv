@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service DEF Travel: Scenario Managed'
+define service ZSRV_VAM_TRAVEL_M {
+  expose ZC_VAM_TRAVEL_M;
+  expose ZC_VAM_BOOKING_M;
+  expose ZC_VAM_BOOKSUPPL_M;
+}

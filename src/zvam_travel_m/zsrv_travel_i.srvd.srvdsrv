@@ -1,0 +1,6 @@
+@EndUserText.label: 'SRV'
+define service ZSRV_TRAVEL_I {
+  expose ZI_VAM_TRAVEL_M;
+  expose ZI_VAM_BOOKING_M;
+  expose ZI_VAM_BOOKSUPPL_M;
+}
