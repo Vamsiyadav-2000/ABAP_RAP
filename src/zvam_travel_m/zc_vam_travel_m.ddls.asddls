@@ -6,8 +6,10 @@ provider contract transactional_query
  as projection on ZI_VAM_TRAVEL_M
 {
     key TravelId,
+    @ObjectModel.text.element: [ 'AgencyName' ]
     AgencyId,
     _Agency.Name as AgencyName,
+    @ObjectModel.text.element: [ 'CustomerName' ]
     CustomerId,
     _Customer.LastName as CustomerName,  
     BeginDate,
@@ -16,10 +18,14 @@ provider contract transactional_query
     BookingFee,
     @Semantics.amount.currencyCode: 'CurrencyCode'
     TotalPrice,
+    @Consumption.valueHelpDefinition: [{ entity :{
+                                          name: 'I_Currency',
+                                         element: 'CurrencyCode ' }}]
     CurrencyCode,
     Description,
+    @ObjectModel.text.element: [ 'OverallStatusText' ]
     OverallStatus,
-    _Status._Text.Text : localized,
+    _Status._Text.Text as OverallStatusText: localized,
     CreatedBy,
     CreatedAt,
     LastChangedBy,
