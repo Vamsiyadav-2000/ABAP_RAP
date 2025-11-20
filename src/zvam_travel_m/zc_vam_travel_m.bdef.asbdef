@@ -1,0 +1,29 @@
+projection;
+strict ( 2 );
+
+define behavior for ZC_VAM_TRAVEL_M //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Booking { create; }
+}
+
+define behavior for ZC_VAM_BOOKING_M //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _Travel;
+  use association _BookingSuppl { create; }
+}
+
+define behavior for ZC_VAM_BOOKSUPPL_M //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _Travel;
+  use association _Booking;
+}

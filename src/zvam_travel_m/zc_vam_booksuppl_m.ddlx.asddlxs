@@ -1,0 +1,43 @@
+@Metadata.layer: #CORE
+@Search.searchable: true
+@UI.headerInfo: {
+    typeName: 'BookingSupplement',
+    typeNamePlural: 'BookingSupplements',
+    title: {
+        type: #STANDARD,
+        label: 'BookingSupplement'
+    }
+}
+annotate view ZC_VAM_BOOKSUPPL_M
+    with 
+{
+     @UI.facet: [
+         { 
+           id: 'BookingSupplementId',
+           label : 'BookingSupplement',
+           position: 10,
+           purpose: #STANDARD,
+           type: #IDENTIFICATION_REFERENCE   
+         }
+         ]
+    @Search.defaultSearchElement: true 
+    TravelId;
+    @Search.defaultSearchElement: true
+    BookingId;
+    @UI.lineItem: [{ position: 20 }]
+    @UI.identification: [{ position: 10 }]
+    @Search.defaultSearchElement: true
+    BookingSupplementId;
+    @UI.lineItem: [{ position: 30 }]
+    @UI.identification: [{ position: 20 }]
+    @Search.defaultSearchElement: true
+    @UI.textArrangement: #TEXT_ONLY
+    SupplementId;
+    @UI.lineItem: [{ position: 40 }]
+    @UI.identification: [{ position: 30 }]
+    @Search.defaultSearchElement: true
+    Price;
+//   CurrencyCode;
+//    LastChangedAt;
+    
+}

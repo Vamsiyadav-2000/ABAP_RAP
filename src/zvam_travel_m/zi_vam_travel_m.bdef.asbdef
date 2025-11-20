@@ -1,0 +1,42 @@
+managed ;// implementation in class zbp_i_vam_travel_m unique;
+strict ( 2 );
+
+define behavior for ZI_VAM_TRAVEL_M alias Travel
+implementation in class zcl_bp_vam_travel_m unique
+persistent table zvam_travel_m
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) TravelId;
+  association _Booking { create; }
+}
+
+define behavior for ZI_VAM_BOOKING_M //alias <alias_name>
+persistent table zvam_booking_m
+lock dependent by _Travel
+authorization dependent by _Travel
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) TravelId, BookingId;
+  association _Travel;
+  association _BookingSuppl { create; }
+}
+
+define behavior for ZI_VAM_BOOKSUPPL_M //alias <alias_name>
+persistent table zvam_booksuppl_m
+lock dependent by _Travel
+authorization dependent by _Travel
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) TravelId, BookingId, BookingSupplementId;
+  association _Travel;
+  association _Booking;
+}

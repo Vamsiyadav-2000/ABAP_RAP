@@ -1,5 +1,6 @@
  @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Consumtion View for Travel'
+@Metadata.ignorePropagatedAnnotations: true
 @Metadata.allowExtensions: true
 define root view entity ZC_VAM_TRAVEL_M
 provider contract transactional_query
