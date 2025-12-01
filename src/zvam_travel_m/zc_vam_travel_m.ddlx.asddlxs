@@ -58,12 +58,14 @@ annotate view ZC_VAM_TRAVEL_M with
   @UI.lineItem: [{position: 50}]
   @UI.identification: [{position : 50  }]
   EndDate;
-  //   BookingFee;
-  @UI.lineItem: [{position: 60}]
   @UI.identification: [{position : 60  }]
+  BookingFee;
+  @UI.lineItem: [{position: 60}]
+  @UI.identification: [{position : 65  }]
   TotalPrice;
   //   CurrencyCode;
-  //   Description;
+  @UI.identification: [{position : 68  }]
+  Description;
   @UI:{
       lineItem: [{position: 70}],
       selectionField: [{ position: 40 }],

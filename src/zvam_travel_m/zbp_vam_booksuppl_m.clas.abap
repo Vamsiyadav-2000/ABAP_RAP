@@ -1,0 +1,5 @@
+CLASS zbp_vam_booksuppl_m DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_vam_travel_m.
+ENDCLASS.
+
+CLASS zbp_vam_booksuppl_m IMPLEMENTATION.
+ENDCLASS.

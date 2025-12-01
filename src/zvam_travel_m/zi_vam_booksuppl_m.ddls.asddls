@@ -20,6 +20,7 @@ association [1..*] to /DMO/I_SupplementText as _SupplementText on $projection.Su
     @Semantics.amount.currencyCode: 'CurrencyCode'
     price as Price,
     currency_code as CurrencyCode,
+    @Semantics.systemDateTime.localInstanceLastChangedAt: true /*annotation to enble etag field*/
     last_changed_at as LastChangedAt,
     
 //Associations ---------->
