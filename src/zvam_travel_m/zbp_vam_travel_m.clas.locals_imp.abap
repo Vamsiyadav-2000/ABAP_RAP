@@ -63,7 +63,7 @@ CLASS lhc_Travel IMPLEMENTATION.
 *    DATA : lt_vam_travel_m  type TABLE for mapped early zi_vam_travel_m,
 *           ls_vam_travel_m like line of lt_vam_travel_m.
 
-    DATA(lv_curr_num) = lv_latest_num - 1.
+    DATA(lv_curr_num) = lv_latest_num - 1 .
 
     LOOP AT lt_entities INTO ls_entities.
 
@@ -83,6 +83,62 @@ CLASS lhc_Travel IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD earlynumbering_cba_Booking.
+
+  DATA : lv_max_booking TYPE /dmo/booking_id.
+
+  READ ENTITIES OF zi_vam_travel_m IN LOCAL MODE
+       ENTITY TRAVEL BY \_Booking
+       FROM CORRESPONDING #( entities )
+       LINK DATA(lt_link_data).
+
+
+  LOOP AT entities ASSIGNING FIELD-SYMBOL(<ls_group_entity>)
+                             GROUP BY <ls_group_entity>-TravelId.
+
+
+       lv_max_booking = REDUCE #( INIT lv_max = CONV /dmo/booking_Id( '0' )
+                                  FOR ls_link in lt_link_data USING KEY entity
+                                 WHERE ( source-TravelId = <ls_group_entity>-TravelId )
+                                 NEXT lv_max = COND /dmo/booking_Id( WHEN lv_max < ls_link-target-BookingId
+                                                                     THEN ls_link-target-BookingId
+                                                                     ELSE lv_max  )
+                                    ).
+
+
+      lv_max_booking = REDUCE #( INIT lv_max = lv_max_booking
+                                 FOR ls_entity IN entities USING KEY entity
+                                 WHERE ( TravelId = <ls_group_entity>-TravelId )
+                                 FOR ls_booking in ls_entity-%target
+                                 NEXT lv_max = COND /dmo/booking_Id( WHEN lv_max < ls_booking-BookingId
+                                                                     THEN ls_booking-BookingId
+                                                                     ELSE lv_max  )  ).
+
+
+
+
+  LOOP AT entities ASSIGNING FIELD-SYMBOL(<ls_entities>)
+                   USING KEY entity
+                   WHERE TravelId = <ls_group_entity>-TravelId.
+
+        LOOP AT <ls_entities>-%target ASSIGNING FIELD-SYMBOL(<ls_booking>).
+
+            IF <ls_booking>-BookingId IS INITIAL.
+
+                    lv_max_booking += 10.
+
+                    APPEND CORRESPONDING #( <ls_booking> ) TO MAPPED-booking
+                                          ASSIGNING FIELD-SYMBOL(<ls_new_map_book>).
+
+                   <ls_new_map_book>-BookingId = lv_max_booking.
+
+            ENDIF.
+
+        ENDLOOP.
+  ENDLOOP.
+
+
+  ENDLOOP.
+
   ENDMETHOD.
 
 ENDCLASS.
