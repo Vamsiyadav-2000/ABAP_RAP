@@ -7,11 +7,12 @@ persistent table zvam_travel_m
 lock master
 authorization master ( instance )
 etag master LastChangedAt
+early numbering
 {
-  create ( authorization : global );
+  create (authorization : global);
   update;
   delete;
-//  field ( readonly ) TravelId;
+  field ( readonly ) TravelId;
   association _Booking { create; }
   mapping for zvam_travel_m
     {
@@ -33,16 +34,17 @@ etag master LastChangedAt
 
 }
 
-define behavior for ZI_VAM_BOOKING_M //alias <alias_name>
+define behavior for ZI_VAM_BOOKING_M alias Booking
 implementation in class zbp_vam_booking_m unique
 persistent table zvam_booking_m
 lock dependent by _Travel
 authorization dependent by _Travel
 etag master LastChangedAt
+early numbering
 {
   update;
   delete;
-  field ( readonly ) TravelId;
+  field ( readonly ) TravelId, BookingId;
   association _Travel;
   association _BookingSuppl { create; }
   mapping for zvam_booking_m
@@ -61,16 +63,17 @@ etag master LastChangedAt
     }
 }
 
-define behavior for ZI_VAM_BOOKSUPPL_M //alias <alias_name>
+define behavior for ZI_VAM_BOOKSUPPL_M alias BookSuppl
 implementation in class zbp_vam_booksuppl_m unique
 persistent table zvam_booksuppl_m
 lock dependent by _Travel
 authorization dependent by _Travel
 etag master LastChangedAt
+early numbering
 {
   update;
   delete;
-  field ( readonly ) TravelId, BookingId;
+  field ( readonly ) TravelId, BookingId, BookingSupplementId;
   association _Travel;
   association _Booking;
   mapping for zvam_booksuppl_m

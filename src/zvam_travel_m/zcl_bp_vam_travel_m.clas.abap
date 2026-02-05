@@ -1,5 +1,13 @@
-CLASS zcl_bp_vam_travel_m DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_vam_travel_m.
+class ZCL_BP_VAM_TRAVEL_M definition
+  public
+  create private .
+
+public section.
+protected section.
+private section.
 ENDCLASS.
 
-CLASS zcl_bp_vam_travel_m IMPLEMENTATION.
+
+
+CLASS ZCL_BP_VAM_TRAVEL_M IMPLEMENTATION.
 ENDCLASS.

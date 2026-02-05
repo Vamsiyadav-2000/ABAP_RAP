@@ -5,7 +5,8 @@
     typeNamePlural: 'BookingSupplements',
     title: {
         type: #STANDARD,
-        label: 'BookingSupplement'
+        label: 'BookingSupplement',
+        value: 'BookingSupplementId'
     }
 }
 annotate view ZC_VAM_BOOKSUPPL_M

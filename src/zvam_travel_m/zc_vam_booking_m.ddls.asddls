@@ -49,7 +49,7 @@ define view entity ZC_VAM_BOOKING_M
                                                   element: 'BookingStatus'} }]
       BookingStatus,
       _BookingStatus._Text.Text as statustext : localized,
-      //   LastChangedAt,
+      LastChangedAt,
       /* Associations */
       _Airline,
       _BookingStatus,

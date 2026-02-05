@@ -31,6 +31,7 @@ annotate view ZC_VAM_TRAVEL_M with
       ]
   @UI.lineItem: [{position: 10}]
   @UI.identification: [{position : 10  }]
+  @Search.defaultSearchElement: true
   TravelId;
   @UI:{
   lineItem: [{position: 20}],
