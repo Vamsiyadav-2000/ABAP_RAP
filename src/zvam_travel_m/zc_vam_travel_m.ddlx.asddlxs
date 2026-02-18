@@ -20,7 +20,7 @@ annotate view ZC_VAM_TRAVEL_M with
       label: 'Travel',
       type: #IDENTIFICATION_REFERENCE
       },
-      { 
+      {
       id: 'Booking',
       purpose: #STANDARD,
       position: 20 ,
@@ -29,8 +29,8 @@ annotate view ZC_VAM_TRAVEL_M with
       targetElement: '_Booking'
       }
       ]
-  @UI.lineItem: [{position: 10}]
-  @UI.identification: [{position : 10  }]
+  @UI.lineItem: [{position: 10}, { type : #FOR_ACTION, dataAction: 'copyTravel', label: 'Copy Travel' } ]
+  @UI.identification: [{position : 10}, { type : #FOR_ACTION, dataAction: 'copyTravel', label: 'Copy Travel' }]
   @Search.defaultSearchElement: true
   TravelId;
   @UI:{
