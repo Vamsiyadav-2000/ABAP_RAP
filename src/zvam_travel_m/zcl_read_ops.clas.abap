@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_read_ops IMPLEMENTATION.
+CLASS ZCL_READ_OPS IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

@@ -12,7 +12,8 @@ ENDCLASS.
 
 
 
-CLASS zcl_vam_data_generator IMPLEMENTATION.
+CLASS ZCL_VAM_DATA_GENERATOR IMPLEMENTATION.
+
 
 METHOD if_oo_adt_classrun~main.
 

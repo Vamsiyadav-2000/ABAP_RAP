@@ -13,6 +13,15 @@ early numbering
   update;
   delete;
   field ( readonly ) TravelId;
+/************************ actions ***************************/
+  action approve_travel result[1] $self;
+  action reject_travel result[1] $self;
+
+
+ factory action copyTravel [1];
+
+ internal action reCalcTotPrice;
+ /************************ actions ***************************/
   association _Booking { create; }
   mapping for zvam_travel_m
     {
